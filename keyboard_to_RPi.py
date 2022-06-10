@@ -1,5 +1,13 @@
-# import curses
+# import curses and GPIO
 import curses
+import RPi.GPIO as GPIO
+
+#set GPIO numbering mode and define output pins
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(4,GPIO.OUT)
+GPIO.setup(5,GPIO.OUT)
+GPIO.setup(6,GPIO.OUT)
+GPIO.setup(26,GPIO.OUT)
 
 # Get the curses window, turn off echoing of keyboard to screen, turn on
 # instant (no waiting) key response, and use special values for cursor keys
@@ -14,17 +22,34 @@ try:
             if char == ord('q'):
                 break
             elif char == curses.KEY_UP:
-                print ("up")
+                GPIO.output(4,False)
+                GPIO.output(5,True)
+                GPIO.output(6,False)
+                GPIO.output(26,True)
             elif char == curses.KEY_DOWN:
-                print ("down")
+                GPIO.output(4,True)
+                GPIO.output(5,False)
+                GPIO.output(6,True)
+                GPIO.output(26,False)
             elif char == curses.KEY_RIGHT:
-                print ("right")
+                GPIO.output(4,True)
+                GPIO.output(5,False)
+                GPIO.output(6,False)
+                GPIO.output(26,True)
             elif char == curses.KEY_LEFT:
-                print ("left")
+                GPIO.output(4,False)
+                GPIO.output(5,True)
+                GPIO.output(6,True)
+                GPIO.output(26,False)
             elif char == 10:
-                print ("stop")    
+                GPIO.output(4,False)
+                GPIO.output(5,False)
+                GPIO.output(6,False)
+                GPIO.output(26,False)
              
 finally:
     #Close down curses properly, inc turn echo back on!
     curses.nocbreak(); screen.keypad(0); curses.echo()
     curses.endwin()
+    GPIO.cleanup()
+    
