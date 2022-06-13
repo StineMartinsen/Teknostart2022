@@ -3,12 +3,13 @@ import curses
 import RPi.GPIO as GPIO
 
 #set GPIO numbering mode and define output pins
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(4,GPIO.OUT)
 GPIO.setup(5,GPIO.OUT)
 GPIO.setup(6,GPIO.OUT)
 GPIO.setup(26,GPIO.OUT)
 
+#test
 # Get the curses window, turn off echoing of keyboard to screen, turn on
 # instant (no waiting) key response, and use special values for cursor keys
 screen = curses.initscr()
