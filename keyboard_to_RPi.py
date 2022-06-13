@@ -23,21 +23,25 @@ try:
             if char == ord('q'):
                 break
             elif char == curses.KEY_UP:
+                print("up")
                 GPIO.output(4,False)
                 GPIO.output(5,True)
                 GPIO.output(6,False)
                 GPIO.output(26,True)
             elif char == curses.KEY_DOWN:
+                print("down")
                 GPIO.output(4,True)
                 GPIO.output(5,False)
                 GPIO.output(6,True)
                 GPIO.output(26,False)
             elif char == curses.KEY_RIGHT:
+                print("rigth")
                 GPIO.output(4,True)
                 GPIO.output(5,False)
                 GPIO.output(6,False)
                 GPIO.output(26,True)
             elif char == curses.KEY_LEFT:
+                print("left")
                 GPIO.output(4,False)
                 GPIO.output(5,True)
                 GPIO.output(6,True)
