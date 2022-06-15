@@ -1,0 +1,1 @@
+print("det funker å printer fra termis")
