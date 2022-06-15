@@ -9,13 +9,31 @@ def control_motors():
         with Pyro4.Proxy("PYRONAME:ROVSyncer") as rov:
             while rov.run:
                 if keys.state('K_UP'):
+                    UP = True
                     print('Forward')
-                elif keys.state('K_DOWN'):
+                else:
+                    UP = False
+                if keys.state('K_DOWN'):
+                    DOWN = True
                     print('Backward')
-                elif keys.state('K_RIGHT'):
+                else:
+                    DOWN = False    
+                if keys.state('K_RIGHT'):
+                    RIGTH = True
                     print('Right')
-                elif keys.state('K_LEFT'):
+                else:
+                    RIGTH = False
+                if keys.state('K_LEFT'):
+                    LEFT = True    
                     print('left')
+                else:
+                    LEFT = False
+                
+                GPIO.output(4,UP)
+                GPIO.output(5,DOWN)
+                GPIO.output(6,RIGTH)
+                GPIO.output(26,LEFT)   
+
 
 # create the webmethod class
 web_method = WebMethod(
