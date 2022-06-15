@@ -1,7 +1,10 @@
 from os import path
 import Pyro4
 from edurov import WebMethod
+import RPi.GPIO as GPIO
 
+#set GPIO numbering mode and define output pins
+GPIO.setmode(GPIO.BCM)
 
 def control_motors():
     """Will be started in parallel by the WebMethod class"""
