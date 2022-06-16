@@ -10,11 +10,12 @@ import socket
 import struct
 import subprocess
 import warnings
+import distro
 
 
 def detect_pi():
-    return platform.linux_distribution()[0].lower() == 'debian'
-
+    #return platform.linux_distribution()[0].lower() == 'debian'
+    return distro.linux_distribution()
 
 if detect_pi():
     import serial
